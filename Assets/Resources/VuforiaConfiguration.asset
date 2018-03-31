@@ -16,8 +16,8 @@ MonoBehaviour:
     ufoLicenseKey: QWRFSWF0My8vLy8vQUFBQUtDbkxxZmJaQkVMdnU2S2svVlpTUTJndGZHMWdDamJ5MjZJVks4Zlo5Z2ROeGpyVCtRNUdiRFV3cjMwRDVNeVpTTXZkK29XaGFpV3doYnNWcVNTMXR6M2k0NGJQYVdrNVFMQWRYZDV4QTE0WTJjVG5SbFhGbFRoeFIxMWdWc2dmU3dzdk0rMmFTZkRJKzlJWVZDa200aXZ0VXNscjNTTjdHV1VLSlFMS3J3c29mVWJOcEdOL1pwdzNMZ0ZVY3ZueUhYMFFxcTRxSytVU1NQZUNhS0c0UElsQTdBRnlOcUd2SDBCSWJqNmIxcDd4TEpCdUs0YXpjNkw0MlpiQThFZHliaW9tRmNNVW9pT3JOaXVzT04zTmJYUkkyWGRCb3d3aUcwQ0F0dGx5bmdpeGp0QnpJeEhBUEozL3pYOFFlNGY3YWFJN0tOMjRBb1VLLzNYVG1RT0JUbDEvbVhuSzdJOHhPNmFNNzYwNHV5U3Q=
     delayedInitialization: 0
     cameraDeviceModeSetting: -3
-    maxSimultaneousImageTargets: 3
-    maxSimultaneousObjectTargets: 3
+    maxSimultaneousImageTargets: 0
+    maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
     mirrorVideoBackground: 0
@@ -45,10 +45,8 @@ MonoBehaviour:
   databaseLoad:
     dataSetsToLoad:
     - Holo-Mole1
-    - Holo-Mole
     dataSetsToActivate:
     - Holo-Mole1
-    - Holo-Mole
   videoBackground:
     clippingMode: 0
     numDivisions: 2
