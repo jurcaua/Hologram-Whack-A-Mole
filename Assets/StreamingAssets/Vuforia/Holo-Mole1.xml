@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="Holo-Mole1"/>
+</Tracking>
+
+<Assembly name="Holo-Mole1s_assembly">
+<Part name="Holo-Mole1" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="-62.205 16.9204 3479.13" rotation="AD: 1 2.925172278448435e-17 1.2763552861861274e-19 179.5">
+
+</EntryPoint>
+
+</Assembly>
+</QCARConfig>
