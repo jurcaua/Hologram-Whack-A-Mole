@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="mole-bw" size="1.000000 1.000000" />
+    <ImageTarget name="mole" size="1.000000 1.000000" />
+    <ImageTarget name="hammer1-large-scaled2" size="0.500000 0.806760" />
+    <ImageTarget name="hammer1-large-scaled" size="1.000000 1.084980" />
+    <ImageTarget name="YOU-new-holo-6" size="1.000000 0.928247" />
     <ImageTarget name="YOU-new-holo-5" size="1.000000 1.000000" />
     <ImageTarget name="YOU-new-holo-4" size="1.000000 1.000000" />
     <ImageTarget name="YOU-new-holo-3" size="1.000000 1.000000" />
