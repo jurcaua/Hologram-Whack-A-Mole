@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="YOU-new-holo-5" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-new-holo-4" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-new-holo-3" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-new-holo-2" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-new-holo-1" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-holo1" size="1.000000 1.000000" />
+    <ImageTarget name="YOU-bw" size="1.000000 1.000000" />
+    <ImageTarget name="RDY-bw" size="1.000000 1.000000" />
+    <ImageTarget name="ARE-bw" size="1.000000 1.000000" />
+    <ImageTarget name="RDY" size="0.100000 0.100000" />
+    <ImageTarget name="ARE" size="0.100000 0.100000" />
+    <ImageTarget name="YOU" size="0.100000 0.100000" />
+  </Tracking>
+</QCARConfig>
