@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameController : MonoBehaviour {
@@ -16,18 +17,23 @@ public class GameController : MonoBehaviour {
     public TextDebug textDebug;
 
     public Transform[] moles;
-    public float startSpeed = 5f;
-    public float maxSpeed = 20f;
+    public float startSpeed = 7.5f;
+    public float maxSpeed = 30f;
     public float startDelay = 0.5f;
+    public float hideSpeed = 30f;
 
     private float betweenDelay;
     private float moleSpeed;
 
     private int currentMole;
     public bool hide = false;
+    private bool readyToRestart = false;
+    private float timeCanRestart = 0;
 
     public TextMeshProUGUI scoreText;
     private int score = 0;
+    public HighscoreManager highscoreManager;
+    public GameObject enterNameHighscorePanel;
 
     // Use this for initialization
     void Start () {
@@ -41,9 +47,30 @@ public class GameController : MonoBehaviour {
         betweenDelay = startDelay;
         moleSpeed = startSpeed;
 
+        enterNameHighscorePanel.SetActive(false);
         AddScore(0);
 
         RandomPopOut();
+    }
+
+    public void GameOver() {
+        if (highscoreManager.IsHighscore(score)) {
+            enterNameHighscorePanel.SetActive(true);
+        } else {
+            highscoreManager.DisplayHighscores();
+            readyToRestart = true;
+            timeCanRestart = Time.time + 2f;
+        }
+    }
+
+    public void SetHighscore(string name) {
+        enterNameHighscorePanel.SetActive(false);
+
+        string date = System.DateTime.Now.ToShortDateString();
+        highscoreManager.AddHighscore(name, score, date);
+        highscoreManager.DisplayHighscores();
+        readyToRestart = true;
+        timeCanRestart = Time.time + 2f;
     }
 
     void RandomPopOut() {
@@ -55,8 +82,13 @@ public class GameController : MonoBehaviour {
         scoreText.text = "Score: " + score;
     }
 
-	// Update is called once per frame
-	void Update () {
+    void IncreaseDifficulty() {
+        moleSpeed = Mathf.Clamp(moleSpeed + 2.5f, startSpeed, maxSpeed);
+        betweenDelay = Mathf.Clamp(betweenDelay - 0.1f, 0f, startDelay);
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (tracker.TrackingFound() || debugMode) {
             bool fire = false;
             Ray shootRay = new Ray();
@@ -84,7 +116,20 @@ public class GameController : MonoBehaviour {
                 }
             }
         }
-	}
+
+        if (Application.isEditor) {
+            if (Input.GetKey(KeyCode.Space)) {
+                AddScore(1);
+            }
+        }
+
+        if (readyToRestart && Time.time > timeCanRestart) {
+            if (Input.anyKey || Input.touchCount > 0) {
+                highscoreManager.SaveHighscores();
+                SceneManager.LoadScene("title");
+            }
+        }
+    }
 
     void ShootBullet() {
         Vector3 newScale = new Vector3(0.01f, 0.01f, 0.01f);
@@ -106,11 +151,6 @@ public class GameController : MonoBehaviour {
 
             debugBullet.transform.parent = debugBulletsParent;
         }
-    }
-
-    void IncreaseDifficulty() {
-        moleSpeed = Mathf.Clamp(moleSpeed + 2f, startSpeed, maxSpeed);
-        betweenDelay = Mathf.Clamp(betweenDelay - 0.1f, 0f, startDelay);
     }
 
     IEnumerator FlashMole(int moleIndex) {
@@ -157,12 +197,13 @@ public class GameController : MonoBehaviour {
 
         while (moles[moleIndex].localPosition.y > startY) {
             if (tracker.TrackingFound() || debugMode) {
-                moles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
+                if (hide) {
+                    moles[moleIndex].localPosition -= new Vector3(0f, hideSpeed * Time.fixedDeltaTime, 0f);
+                } else {
+                    moles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
+                }
                 if (debugMode) {
                     debugMoles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
-                }
-                if (hide) {
-                    moles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
                 }
             }
 

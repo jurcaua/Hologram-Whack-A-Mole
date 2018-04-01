@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour {
             }
         } else {
             //r.enabled = false;
-            Debug.Log("(" + gameObject.name + ")tracker.TrackingFound()=" + tracker.TrackingFound().ToString() + " | isDebug=" + isDebug.ToString());
+            //Debug.Log("(" + gameObject.name + ")tracker.TrackingFound()=" + tracker.TrackingFound().ToString() + " | isDebug=" + isDebug.ToString());
         }
 	}
 }

@@ -11,6 +11,8 @@ public class DistancePair {
 
 public class TextDebug : MonoBehaviour {
 
+    public bool debugMobile = true;
+
     public TextMeshProUGUI trackerText;
     public VuforiaTracker tracker;
 
@@ -23,32 +25,45 @@ public class TextDebug : MonoBehaviour {
     public TextMeshProUGUI bulletPosition;
     public Transform ARCamera;
     public TextMeshProUGUI cameraPosition;
-	
-	// Update is called once per frame
-	void Update () {
-        trackerText.text = "Tracking: " + tracker.TrackingFound().ToString();
 
-        touchText.text = "Shooting: " + shooting.ToString() + " - " + bullets.childCount;
-        shooting = false;
+    private void Start() {
+        if (debugMobile) {
+            trackerText.gameObject.SetActive(true);
 
-        cameraPosition.text = "Camera Position: " + ARCamera.position.ToString();
+            touchText.gameObject.SetActive(true);
 
-        modelPosition.text = "Model Position: " + model.position.ToString();
+            modelPosition.gameObject.SetActive(true);
+            trackerText.gameObject.SetActive(true);
+            bulletPosition.gameObject.SetActive(true);
+            cameraPosition.gameObject.SetActive(true);
+        } else {
+            trackerText.gameObject.SetActive(false);
 
-        if (bullets.childCount > 0) {
-            bulletPosition.text = "Bullet Position: " + bullets.GetChild(0).position.ToString();
-        } else{
-            bulletPosition.text = "No bullets...";
+            touchText.gameObject.SetActive(false);
+
+            modelPosition.gameObject.SetActive(false);
+            trackerText.gameObject.SetActive(false);
+            bulletPosition.gameObject.SetActive(false);
+            cameraPosition.gameObject.SetActive(false);
         }
+    }
 
-        /*
-        distance.text = "Distance: " + Vector3.Distance(between[0].transform.position, hammer.position).ToString() 
-            + ", " + Vector3.Distance(between[1].transform.position, hammer.position).ToString()
-            + ", " + Vector3.Distance(between[2].transform.position, hammer.position).ToString();
+    void Update () {
+        if (debugMobile) {
+            trackerText.text = "Tracking: " + tracker.TrackingFound().ToString();
 
-        colliding.text = "Colliding: " + between[0].collidingWithHammer.ToString()
-            + ", " + between[1].collidingWithHammer.ToString()
-            + ", " + between[2].collidingWithHammer.ToString();
-            */
+            touchText.text = "Shooting: " + shooting.ToString() + " - " + bullets.childCount;
+            shooting = false;
+
+            cameraPosition.text = "Camera Position: " + ARCamera.position.ToString();
+
+            modelPosition.text = "Model Position: " + model.position.ToString();
+
+            if (bullets.childCount > 0) {
+                bulletPosition.text = "Bullet Position: " + bullets.GetChild(0).position.ToString();
+            } else {
+                bulletPosition.text = "No bullets...";
+            }
+        }
     }
 }
