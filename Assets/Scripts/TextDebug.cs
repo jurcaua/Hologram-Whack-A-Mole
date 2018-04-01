@@ -15,7 +15,7 @@ public class TextDebug : MonoBehaviour {
     public VuforiaTracker tracker;
 
     public TextMeshProUGUI touchText;
-    public bool shooting = false;
+    [HideInInspector] public bool shooting = false;
     public Transform bullets;
 
     public Transform model;
@@ -23,18 +23,6 @@ public class TextDebug : MonoBehaviour {
     public TextMeshProUGUI bulletPosition;
     public Transform ARCamera;
     public TextMeshProUGUI cameraPosition;
-
-    /*
-    public TextMeshProUGUI distance;
-    public TextMeshProUGUI colliding;
-    public Transform hammer;
-    public ImageTargetCollison[] between;
-    */
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

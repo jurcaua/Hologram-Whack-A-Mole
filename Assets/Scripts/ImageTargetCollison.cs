@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ImageTargetCollison : MonoBehaviour {
 
-    [HideInInspector] public bool collidingWithHammer = false;
-
     private Collider c;
 
     private void Start() {
@@ -13,20 +11,9 @@ public class ImageTargetCollison : MonoBehaviour {
     }
 
     void Update() {
+        // always make sure collider is ON
         if (!c.enabled) {
             c.enabled = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Hammer")) {
-            collidingWithHammer = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Hammer")) {
-            collidingWithHammer = false;
         }
     }
 }

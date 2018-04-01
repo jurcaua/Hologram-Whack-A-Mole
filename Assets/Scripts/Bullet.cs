@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour {
 	void FixedUpdate () {
         if (tracker.TrackingFound() || isDebug) {
             //r.enabled = true;
-            transform.Translate(transform.forward * Time.fixedDeltaTime * speed);
+            transform.Translate(Vector3.forward * Time.fixedDeltaTime * speed); ////  THIS IOS PRPBELMMM<
             //transform.position += transform.forward * speed * Time.fixedDeltaTime;
             timeAlive += Time.fixedDeltaTime;
             if (timeAlive > lifetime) {

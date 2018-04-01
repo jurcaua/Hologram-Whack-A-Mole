@@ -5,12 +5,14 @@ using UnityEngine;
 public class MoleCounter : MonoBehaviour {
 
     public GameController gameController;
+    public TextDebug debug;
     public int molePointValue = 1;
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Bullet")) {
             Destroy(other.gameObject);
             gameController.AddScore(molePointValue);
+            gameController.hide = true;
         }
     }
 }

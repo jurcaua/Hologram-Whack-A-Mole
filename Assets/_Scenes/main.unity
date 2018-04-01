@@ -2054,19 +2054,21 @@ GameObject:
   m_PrefabParentObject: {fileID: 1616435554427746, guid: 89f4a6adf2017cb40b67e79d0474b866,
     type: 2}
   m_PrefabInternal: {fileID: 1562707226}
---- !u!136 &771444184
-CapsuleCollider:
+--- !u!54 &771444184
+Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771444183}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 3.3000002
-  m_Height: 14.8667555
-  m_Direction: 1
-  m_Center: {x: 0.0000009431791, y: 4.1333923, z: -0.0000006769575}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!21 &790348585
 Material:
   serializedVersion: 6
@@ -2321,7 +2323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 275, y: 60.519043}
+  m_AnchoredPosition: {x: 284, y: 60.519043}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &882670943
@@ -2539,6 +2541,8 @@ MonoBehaviour:
   touchText: {fileID: 1487151234}
   shooting: 0
   bullets: {fileID: 2112492860}
+  collidingText: {fileID: 0}
+  colliding: 0
   model: {fileID: 1562707227}
   modelPosition: {fileID: 1419942108}
   bulletPosition: {fileID: 393946041}
@@ -3811,19 +3815,21 @@ GameObject:
   m_PrefabParentObject: {fileID: 1616435554427746, guid: 89f4a6adf2017cb40b67e79d0474b866,
     type: 2}
   m_PrefabInternal: {fileID: 1918728771}
---- !u!136 &1427591198
-CapsuleCollider:
+--- !u!54 &1427591198
+Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427591197}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 3.3000002
-  m_Height: 14.8667555
-  m_Direction: 1
-  m_Center: {x: 0.0000009431791, y: 4.1333923, z: -0.0000006769575}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1467571604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,7 +4232,13 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7675ee0bd2fd9304e9a0ed7c4719e870, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114521623548474896, guid: 89f4a6adf2017cb40b67e79d0474b866,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2051930928}
+    m_RemovedComponents:
+    - {fileID: 135835444985408782, guid: 89f4a6adf2017cb40b67e79d0474b866, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 89f4a6adf2017cb40b67e79d0474b866, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1562707227 stripped
@@ -4246,7 +4258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da8f4ce289ea6942ac67035fdf5e8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collidingWithHammer: 0
 --- !u!1 &1618343307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,6 +4493,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors: []
+--- !u!1 &1803328740 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1528726372546950, guid: 89f4a6adf2017cb40b67e79d0474b866,
+    type: 2}
+  m_PrefabInternal: {fileID: 1562707226}
+--- !u!64 &1803328741
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803328740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!1 &1846933353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,7 +4802,13 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7675ee0bd2fd9304e9a0ed7c4719e870, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114521623548474896, guid: 89f4a6adf2017cb40b67e79d0474b866,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2051930928}
+    m_RemovedComponents:
+    - {fileID: 135835444985408782, guid: 89f4a6adf2017cb40b67e79d0474b866, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 89f4a6adf2017cb40b67e79d0474b866, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1918728772 stripped
@@ -4880,7 +4916,7 @@ GameObject:
   - component: {fileID: 2051930928}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5113,6 +5149,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053143586}
+--- !u!1 &2054556420 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1528726372546950, guid: 89f4a6adf2017cb40b67e79d0474b866,
+    type: 2}
+  m_PrefabInternal: {fileID: 1918728771}
+--- !u!64 &2054556421
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054556420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!1 &2066263368
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,8 +5177,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 558036590}
-  - component: {fileID: 2066263369}
   - component: {fileID: 1582413300}
+  - component: {fileID: 2066263369}
   m_Layer: 0
   m_Name: ARE
   m_TagString: Hole
@@ -5131,19 +5186,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &2066263369
-SphereCollider:
+--- !u!64 &2066263369
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 135835444985408782, guid: 89f4a6adf2017cb40b67e79d0474b866,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2066263368}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 12
-  m_Center: {x: -0.00000020424392, y: 2.91, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!21 &2079793588
 Material:
   serializedVersion: 6

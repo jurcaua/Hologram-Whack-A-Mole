@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
     private float moleSpeed;
 
     private int currentMole;
+    public bool hide = false;
 
     public TextMeshProUGUI scoreText;
     private int score = 0;
@@ -86,7 +87,7 @@ public class GameController : MonoBehaviour {
 	}
 
     void ShootBullet() {
-        Vector3 newScale = new Vector3(0.2f, 0.2f, 0.2f);
+        Vector3 newScale = new Vector3(0.01f, 0.01f, 0.01f);
 
         GameObject newBullet = Instantiate(projectile, ARCamera.transform.position, ARCamera.transform.rotation);
         //newBullet.transform.position = ARCamera.transform.position;
@@ -108,8 +109,8 @@ public class GameController : MonoBehaviour {
     }
 
     void IncreaseDifficulty() {
-        moleSpeed = Mathf.Clamp(moleSpeed + 1f, startSpeed, maxSpeed);
-        betweenDelay = Mathf.Clamp(betweenDelay - 0.05f, 0f, startDelay);
+        moleSpeed = Mathf.Clamp(moleSpeed + 2f, startSpeed, maxSpeed);
+        betweenDelay = Mathf.Clamp(betweenDelay - 0.1f, 0f, startDelay);
     }
 
     IEnumerator FlashMole(int moleIndex) {
@@ -146,6 +147,9 @@ public class GameController : MonoBehaviour {
                 if (debugMode) {
                     debugMoles[moleIndex].localPosition += new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
                 }
+                if (hide) {
+                    break;
+                }
             }
 
             yield return new WaitForSeconds(Time.fixedDeltaTime);
@@ -157,10 +161,14 @@ public class GameController : MonoBehaviour {
                 if (debugMode) {
                     debugMoles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
                 }
+                if (hide) {
+                    moles[moleIndex].localPosition -= new Vector3(0f, moleSpeed * Time.fixedDeltaTime, 0f);
+                }
             }
 
             yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
+        hide = false;
         StopCoroutine(flashing);
         moles[moleIndex].gameObject.SetActive(false);
         if (debugMode) {
